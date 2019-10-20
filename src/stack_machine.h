@@ -22,12 +22,13 @@
 // TODO: Uncomment operations from your variant!!
 #define PLUS_OP       // default
 //#define MINUS_OP      // variant 1
-//#define MULT_OP       // variant 2
-//#define DIV_OP        // variant 3
+#define MULT_OP       // variant 2
+#define DIV_OP        // variant 3
 //#define CHOICE_OP     // variant 4
 //#define ASSIGN_OP     // variant 5
 //#define SIG_CHANGE_OP // variant 6
-//#define INVER_OP      // variant 7
+#define INVER_OP      // variant 7
+
 //#define AND_OP        // variant 8
 //#define OR_OP         // variant 9
 //#define POW_OP        // variant 10
@@ -104,12 +105,30 @@ class MinusOp : public IOperation {
 #ifdef MULT_OP
 class MultOp : public IOperation {
 // TODO Implement virtual methods like in PlusOp class
+//public:
+//    virtual ~MultOp() {}
+    public:
+        // IOperation interface overriding
+        // We explicitly use virtual keyword to point out the virtual nature of the methods
+
+        /** If a given operator symb is not '*", an exception is thrown*/
+        virtual int operation(char op, int a, int b, int c) override;
+        virtual Arity getArity() const override;
 };
 #endif
 
 #ifdef DIV_OP
 class DivOp : public IOperation {
 // TODO Implement virtual methods like in PlusOp class
+//public:
+//    virtual ~DivOp() {}
+    public:
+        // IOperation interface overriding
+        // We explicitly use virtual keyword to point out the virtual nature of the methods
+
+        /** If a given operator symb is not '/", an exception is thrown*/
+        virtual int operation(char op, int a, int b, int c) override;
+        virtual Arity getArity() const override;
 };
 #endif
 
@@ -134,6 +153,15 @@ class SigChangeOp : public IOperation {
 #ifdef INVER_OP
 class InverOp : public IOperation {
 // TODO Implement virtual methods like in PlusOp class
+//public:
+//    virtual ~InverOp() {}
+    public:
+        // IOperation interface overriding
+        // We explicitly use virtual keyword to point out the virtual nature of the methods
+
+        /** If a given operator symb is not '~", an exception is thrown*/
+        virtual int operation(char op, int a, int b, int c) override;
+        virtual Arity getArity() const override;
 };
 #endif
 
